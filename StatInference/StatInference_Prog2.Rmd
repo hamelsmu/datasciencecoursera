@@ -1,0 +1,51 @@
+---
+fontsize:10
+---
+**Statistical Inference Programming Assignment Part 2**
+Author: "Hamel Husain"
+
+This is the report for part 2 (inference) of the Coursera statistical inference class.  The full code for this report can be viewed at: 
+
+**https://github.com/hamelsmu/datasciencecoursera/tree/master/StatInference**
+
+**1.  Load the ToothGrowth data and provide basic summary of data. **
+```{r echo = FALSE}
+library(datasets)
+library(ggplot2)
+data(ToothGrowth) 
+str(ToothGrowth)
+```
+
+**2.  Use confidence intervals and hypothesis tests to compare tooth growth by supp and dose.**
+I will first explore the data via density plot:
+```{r echo = FALSE, fig.width=10, fig.height=5}
+#Make Plot
+g = ggplot(ToothGrowth, aes(len))
+g + geom_density(aes(fill = supp), alpha = .5) + facet_grid(dose~.) + 
+labs(x = 'Tooth Length', y = 'Density', 
+title = 'The Effect of Vitamin C on Tooth Growth\nin Guinea Pigs by Dosage (.5, 1, 2) and\nMethod of Delivery (OJ, VC)', 
+fill = 'Method of Delivery\nOJ:Orange Juice\nVC:Absorbic Acid')
+```
+
+Based on the the density plot, I have several hypothesis that I would like to test.  **(1)** For a medium dose (dose 1), Vitaman C adminstered through OJ is associated with longer tooth length than VC.  **(2)** Controlling for delivery method, higher doses lead to higher tooth length.  
+
+**Test Hypothesis 1**
+```{r}
+OJ = ToothGrowth[ToothGrowth$dose ==1 & ToothGrowth$supp == 'OJ', ]$len
+VC = ToothGrowth[ToothGrowth$dose ==1 & ToothGrowth$supp == 'VC', ]$len
+t.test(OJ, VC)
+```
+
+**Conclusion**: Based on these results, I reject the null hypothesis that the mean difference between OJ and VC where dose = 1 is zero.  I feel confident in saying that OJ is associated with longer teeth length than VC for medium dosage.  I am assuming that the variances of these two groups are equal.
+
+**Test Hypothesis 2**
+```{r}
+low_dose_OJ = ToothGrowth[ToothGrowth$dose ==.5 & ToothGrowth$supp == 'OJ', ]$len
+high_dose_OJ = ToothGrowth[ToothGrowth$dose ==2 & ToothGrowth$supp == 'OJ', ]$len
+low_dose_VC = ToothGrowth[ToothGrowth$dose ==.5 & ToothGrowth$supp == 'VC', ]$len
+high_dose_VC = ToothGrowth[ToothGrowth$dose ==2 & ToothGrowth$supp == 'VC', ]$len
+t.test(high_dose_OJ, low_dose_OJ)
+t.test(high_dose_VC, low_dose_VC)
+```
+
+**Conclusion**: I reject the null hypothesis that high dosages have the same mean tooth length as low dosages, when controlling for delivery method.  Furthermore, I noticed that the effect of dosage is more prounounced when the delivery method is VC.  I again assumed the variance of the two groups were equal when performing the t-test.
