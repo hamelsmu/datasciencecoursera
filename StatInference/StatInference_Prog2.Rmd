@@ -4,9 +4,7 @@ fontsize:10
 **Statistical Inference Programming Assignment Part 2**
 Author: "Hamel Husain"
 
-This is the report for part 2 (inference) of the Coursera statistical inference class.  The full code for this report can be viewed at: 
-
-**https://github.com/hamelsmu/datasciencecoursera/tree/master/StatInference**
+This is the report for part 2 (inference) of the Coursera statistical inference class.  The full code for this report can be viewed at: **https://github.com/hamelsmu/datasciencecoursera/blob/master/StatInference/StatInference_Prog2.Rmd**
 
 **1.  Load the ToothGrowth data and provide basic summary of data. **
 ```{r echo = FALSE}
