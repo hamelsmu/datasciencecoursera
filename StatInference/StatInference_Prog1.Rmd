@@ -1,6 +1,8 @@
 ##Statistical Inference - Simulation
 Author: Hamel Husain
 
+**Note:** Because of the two page limit, part of the code for this assignment is hidden.  However, you can see the code for this on my github account at: https://github.com/hamelsmu/datasciencecoursera/blob/master/StatInference/StatInference_Prog1.Rmd
+
 This is the report for part 1 (simulation) of the Coursera statistical inference class.  The problem statement is as follows:
 
 ***The exponential distribution can be simulated in R with rexp(n, lambda) where lambda is the rate parameter. The mean of exponential distribution is 1/lambda and the standard deviation is also also 1/lambda. Set lambda = 0.2 for all of the simulations. ***
