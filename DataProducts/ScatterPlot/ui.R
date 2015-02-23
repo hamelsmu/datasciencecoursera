@@ -44,8 +44,8 @@ shinyUI(fluidPage(
               are kind of neat themes for ggplot2 graphs."), 
     br(),
     helpText("Additionally, this scatterplot fits a loess smoother and prints out the correlation coefficient of the X & Y variables.  I 
-             used the reactive function for calculating the correlation coefficient.  Code for this shiny application is located at:"),
-    a('www.google.com')
+             used the reactive function for calculating the correlation coefficient.  Code for this shiny application is located at the link below:"),
+    HTML('<a href=https://github.com/hamelsmu/datasciencecoursera/tree/master/DataProducts/ScatterPlot>link</a>')
 
     
   ), 

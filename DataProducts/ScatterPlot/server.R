@@ -13,7 +13,12 @@ x = c("")
 
 shinyServer(function(input, output) {
   
+  #########################
   #Reactive Function Here:
+  #  Note - reactive function was not necessary, but included it 
+  #  for puposes of this exercise as I couldn't think of a good reason for
+  #  it, but it was required so I found a way to use it. 
+  
   Xvar = reactive(mtcars[, c(input$X)])
   Yvar = reactive(mtcars[, c(input$Y)])
   
